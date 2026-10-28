@@ -1,0 +1,37 @@
+/* 1. Réglages de base de la page */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: #f7f4ed;
+  color: #443e2e;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.portfolio-page {
+  min-height: 100vh;
+  background-color: #f7f4ed;
+}
+
+.hero-stage {
+  position: relative;
+  width: 100%;
+}
+
+@media (max-width: 700px) {
+  .hero-stage {
+    padding-top: 2.75rem;
+  }
+}

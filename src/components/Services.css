@@ -1,0 +1,236 @@
+
+.services-section {
+  padding: 6rem 8.5% 4rem;
+  background: #443e2e;
+  color: #f7f4ed;
+  font-family: var(--font-acumin, sans-serif);
+  overflow: hidden;
+}
+
+/* Titre et texte d'introduction */
+.services-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: clamp(4rem, 10vh, 7rem);
+}
+
+.services-heading {
+  display: flex;
+  flex-direction: column;
+
+  margin: 0;
+  color: #f7f4ed;
+  font-family: var(--font-impact);
+  font-size: clamp(3.2rem, 4vw, 3.8rem);
+  font-weight: 900;
+  line-height: 0.88;
+  letter-spacing: -0.01em;
+}
+
+.services-accent {
+  color: #ca7d47;
+}
+
+.services-intro {
+    margin-bottom: -4.2rem;
+  font-family: var(--font-acumin, sans-serif);
+  font-size: clamp(1rem, 1.4vw, 1.8rem);
+}
+
+/* Rangée des quatre cartes */
+.services-grid {
+  display: flex;
+  align-items: stretch;
+  gap: 0.45rem;
+  width: 100%;
+}
+
+/* État normal : les cartes sont étroites */
+.service-card {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  align-items: center;
+  min-width: 0;
+  height: clamp(25rem, 61vh, 39rem);
+
+  padding: 1.5rem 0.8rem 1.2rem;
+  border: 3px solid #f7f4ed;
+  border-radius: 3rem;
+
+  background: #aaa9a6;
+  color: #443e2e;
+  text-align: center;
+  cursor: pointer;
+  overflow: hidden;
+
+  transition:
+    flex 500ms ease,
+    background-color 350ms ease,
+    border-color 350ms ease;
+}
+
+/* La carte active s'agrandit */
+.service-card.is-active {
+  flex: 1.8 1 0;
+  background: #f7f4ed;
+  border-color: #f7f4ed;
+}
+
+/* Titres des cartes */
+.service-title {
+  flex-shrink: 0;
+  margin: 0;
+
+  color: #443e2e;
+  font-family: var(--font-impact);
+  font-size: clamp(1rem, 1.4vw, 1.4rem);
+  font-weight: 900;
+  line-height: 1.1;
+  text-align: center;
+}
+
+.service-card.is-active .service-title {
+  color: #ca7d47;
+}
+
+/* Zone réservée aux images */
+.service-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 58%;
+  min-height: 0;
+  margin: 1rem 0;
+}
+
+.service-visual img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Description masquée sur les cartes étroites */
+.service-description {
+  width: 100%;
+  max-width: 30rem;
+  margin: 0;
+
+  color: #443e2e;
+  font-family: var(--font-acumin, sans-serif);
+  font-size: clamp(0.8rem, 1.05vw, 1rem);
+  line-height: 1.3;
+  text-align: left;
+
+  opacity: 0;
+  visibility: hidden;
+  max-height: 0;
+  overflow: hidden;
+
+  transition:
+    opacity 250ms ease,
+    max-height 350ms ease;
+}
+
+.service-card.is-active .service-description {
+  opacity: 1;
+  visibility: visible;
+  max-height: 12rem;
+}
+
+/* More / less au bas de chaque carte */
+.service-more {
+  flex-shrink: 0;
+  margin-top: auto;
+
+  color: #b94b09;
+  font-family: var(--font-impact);
+  font-size: clamp(1rem, 1.4vw, 1.35rem);
+  font-weight: 900;
+  line-height: 1.1;
+}
+
+.service-card.is-active .service-more {
+  color: #ca7d47;
+}
+
+/* Indication visuelle pour la navigation clavier */
+.service-card:focus-visible {
+  outline: 3px solid #ca7d47;
+  outline-offset: 4px;
+}
+
+/* Tablettes et téléphones */
+@media (max-width: 700px) {
+  .services-section {
+    padding: 3.5rem 6% 3rem;
+  }
+
+  .services-header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .services-heading {
+    font-size: clamp(1.6rem, 6.1vw, 3.1rem);
+  }
+
+  .services-intro {
+    font-size: 0.002rem;
+  }
+
+  .services-grid {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .service-card,
+  .service-card.is-active {
+    flex: none;
+    width: 100%;
+    height: 9.5rem;
+    border-radius: 2rem;
+    padding: 1.rem;
+  }
+
+  .service-card.is-active {
+    height: 17rem;
+  }
+
+  .service-title {
+    margin-top: -0.9rem;
+    font-size: 1.1rem;
+  }
+
+  .service-visual {
+    height: 55%;
+    margin: 0.7rem 0;
+  }
+
+  .service-description {
+    font-size: 0.85rem;
+    line-height: 1.3;
+  }
+
+  .service-more {
+    font-size: 1.1rem;
+  }
+}
+
+/* Réduire l'espace vertical sur les écrans peu hauts */
+@media (min-width: 701px) and (max-height: 900px) {
+  .services-header {
+    margin-bottom: 3.5rem;
+  }
+
+  .service-card {
+    height: clamp(24rem, 61vh, 34rem);
+  }
+}

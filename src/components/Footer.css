@@ -1,0 +1,423 @@
+
+.site-footer {
+  width: 100%;
+  overflow: hidden;
+  font-family: var(--font-acumin, sans-serif);
+  --footer-brown-height: clamp(22rem, 36svh, 28rem);
+}
+
+/* PARTIE ORANGE */
+.footer-top {
+  position: relative;
+  height: clamp(22rem, 50svh, 34rem);
+  min-height: 25rem;
+  overflow: hidden;
+  background: #ca8c5d;
+}
+
+/* Réseaux sociaux blancs, sans fond ni cercle */
+.footer-socials {
+  position: absolute;
+  top: 1.5rem;
+  left: 1%;
+
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.footer-socials a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 30px;
+  height: 30px;
+
+  color: #fff;
+  text-decoration: none;
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.footer-socials a:hover {
+  opacity: 0.7;
+  transform: translateY(-2px);
+}
+
+.footer-socials svg {
+  display: block;
+  width: 23px;
+  height: 23px;
+  overflow: visible;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+}
+
+.footer-socials a:nth-child(2) svg,
+.footer-socials a:nth-child(3) svg {
+  fill: currentColor;
+  stroke: none;
+}
+
+.footer-socials .social-icon-dot {
+  fill: currentColor;
+  stroke: none;
+}
+
+/* Les personnages reposent sur la limite orange / brune */
+
+/* Zone contenant les quatre personnages */
+.footer-figures {
+  position: absolute;
+  inset: 0;
+
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: end;
+}
+
+.footer-figure {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  margin: 0;
+}
+
+/* =====================================
+   RÉGLAGES INDIVIDUELS DES PERSONNAGES
+   ===================================== */
+
+/* 1. LET'S TALK */
+.footer-figure--talk {
+  --figure-width: 58%;
+  --figure-height: min(32svh, 250px);
+  --figure-x: -100px;
+  --figure-y: 10px;
+}
+
+/* 2. MY WORK */
+.footer-figure--work {
+  --figure-width: 44%;
+  --figure-height: min(32svh, 250px);
+  --figure-x: -70px;
+  --figure-y: 15px;
+}
+
+/* 3. ABOUT ME */
+.footer-figure--about {
+  --figure-width: 92%;
+  --figure-height: min(32svh, 250px);
+  --figure-x: 30px;
+  --figure-y: 13px;
+}
+
+/* 4. GET HOME */
+.footer-figure--home {
+  --figure-width: 65%;
+  --figure-height: min(32svh, 250px);
+  --figure-x: 107px;
+  --figure-y: 12px;
+}
+
+/* Style commun des images */
+.footer-figure img {
+  display: block;
+
+  width: var(--figure-width);
+  height: var(--figure-height);
+  max-width: none;
+
+  object-fit: contain;
+  object-position: center bottom;
+
+  transform: translate(
+    var(--figure-x),
+    var(--figure-y)
+  );
+}
+
+/* PARTIE BRUN FONCÉ */
+.footer-bottom {
+  position: relative;
+
+  /* HAUTEUR DU BLOC MARRON */
+  height: var(--footer-brown-height);
+  min-height: 0;
+
+  overflow: hidden;
+  background: #443e2e;
+  color: #f7f4ed;
+}
+
+/* Les quatre liens placés sous les personnages */
+.footer-navigation {
+  position: absolute;
+  top: 1.9rem;
+  left: 0;
+  right: 0;
+
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: start;
+}
+
+.footer-navigation-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+
+  color: #f7f4ed;
+  font-family: var(--font-impact, Impact, sans-serif);
+  font-size: clamp(1.5rem, 2.1vw, 2rem);
+  font-weight: 900;
+  line-height: 0.83;
+  letter-spacing: -0.025em;
+  text-align: center;
+  text-decoration: none;
+
+  transition: color 230ms ease, transform 300ms ease;
+  translate: var(--link-x, 0px) var(--link-y, 0px);
+}
+
+/* =====================================
+   POSITION INDIVIDUELLE DES LIENS FOOTER
+   ===================================== */
+
+/* 1. LET'S TALK */
+.footer-navigation-link--talk {
+  --link-x: -97px;
+  --link-y: 0px;
+}
+
+/* 2. MY WORK */
+.footer-navigation-link--work {
+  --link-x: -60px;
+  --link-y: 0px;
+}
+
+/* 3. ABOUT ME */
+.footer-navigation-link--about {
+  --link-x: 45px;
+  --link-y: 0px;
+}
+
+/* 4. GET HOME */
+.footer-navigation-link--home {
+  --link-x: 105px;
+  --link-y: 0px;
+}
+
+.footer-navigation-link:hover {
+  color: #ca8c5d;
+  transform: translateY(-7px);
+}
+
+/* Grand THANKS en bas */
+.footer-thanks {
+  position: absolute;
+  left: 50%;
+  bottom: 0em;
+  transform: translateX(-50%);
+
+  margin: 0;
+  color: #ca8c5d;
+
+  font-family: var(--font-impact, Impact, sans-serif);
+  font-size: clamp(7rem, 9.5vw, 17rem);
+  font-weight: 700;
+  line-height: 0.76;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+/* Textes latéraux */
+.footer-side-note {
+  position: absolute;
+  bottom: 2.4rem;
+
+  margin: 0;
+  color: #f7f4ed;
+
+  font-family: var(--font-acumin-light, sans-serif);
+  font-size: clamp(0.8rem, 1.32vw, 1.4rem);
+  font-weight: 200;
+  line-height: 0.9;
+}
+
+.footer-side-note--left {
+  left: 2%;
+  bottom: 0%;
+  text-align: left;
+}
+
+.footer-side-note--right {
+  right: 2%;
+  bottom: 0%;
+  text-align: right;
+}
+
+/* MOBILE */
+@media (max-width: 700px) {
+  .footer-top {
+    height: 28.5rem;
+    min-height: 22rem;
+  }
+
+  .footer-socials {
+    top: 0.65rem;
+    left: 4%;
+    gap: 0.9rem;
+  }
+
+  .footer-socials a {
+    width: 25px;
+    height: 25px;
+  }
+
+  .footer-socials svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .footer-figure img {
+    height: 17rem;
+    max-width: 15 0%;
+  }
+
+  /* =====================================
+   RÉGLAGES INDIVIDUELS DES PERSONNAGES
+   ===================================== */
+
+/* 1. LET'S TALK */
+.footer-figure--talk {
+  --figure-width: 90%;
+  --figure-height: min(32svh, 250px);
+  --figure-x: -25px;
+  --figure-y: 3px;
+}
+
+/* 2. MY WORK */
+.footer-figure--work {
+  --figure-width: 75%;
+  --figure-height: min(32svh, 250px);
+  --figure-x: -20px;
+  --figure-y: 8px;
+}
+
+/* 3. ABOUT ME */
+.footer-figure--about {
+  --figure-width: 145%;
+  --figure-height: min(76svh, 390px);
+  --figure-x: -3px;
+  --figure-y: 5px;
+}
+
+/* 4. GET HOME */
+.footer-figure--home {
+  --figure-width: 105%;
+  --figure-height: min(32svh, 250px);
+  --figure-x: 28px;
+  --figure-y: 5px;
+}
+
+.site-footer {
+  --footer-brown-height: 28.5rem;
+}
+
+  .footer-navigation {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 1.7rem;
+    padding: 1.6rem 3% 0;
+  }
+
+  /* =====================================
+   POSITION INDIVIDUELLE DES LIENS FOOTER
+   ===================================== */
+
+/* 1. LET'S TALK */
+.footer-navigation-link--talk {
+  --link-x: -87px;
+  --link-y: -15px;
+  line-height: 0.9;
+}
+
+/* 2. MY WORK */
+.footer-navigation-link--work {
+  --link-x: -165px;
+  --link-y: -13px;
+}
+
+/* 3. ABOUT ME */
+.footer-navigation-link--about {
+  --link-x: 150px;
+  --link-y: -70px;
+}
+
+/* 4. GET HOME */
+.footer-navigation-link--home {
+  --link-x: 80px;
+  --link-y: -70px;
+}
+
+.footer-navigation-link:hover {
+  color: #ca8c5d;
+  transform: translateY(-7px);
+}
+
+  .footer-navigation-link {
+    font-size: clamp(1.1rem, 2.5vw, 1.7rem);
+  }
+
+  .footer-thanks {
+    bottom: -0.002rem;
+    font-size: clamp(4.5rem, 16.5vw, 7rem);
+    line-height: 0.8;
+  }
+
+  .footer-side-note {
+    bottom: 0.5rem;
+    font-size: 0.8rem;
+    line-height: 1;
+  }
+
+  .footer-side-note--left {
+    bottom: 0.7%;
+    left: 1.9%;
+  }
+
+  .footer-side-note--right {
+    bottom: 0.7%;
+    right: 1.9%;
+  }
+}
+
+/* Écrans de bureau peu hauts */
+@media (min-width: 701px) and (max-height: 900px) {
+  .footer-top {
+    height: 50svh;
+  }
+
+  .site-footer {
+  --footer-brown-height: clamp(22rem, 35svh, 26rem);
+}
+
+  .footer-figure img {
+    height: min(35svh, 280px);
+  }
+
+  .footer-navigation {
+    top: 1.5rem;
+  }
+}
