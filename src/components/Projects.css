@@ -185,6 +185,11 @@ a.project-media {
   object-position: center top;
 }
 
+/* Capture MAG (très large) dans la grande carte : on garde le côté gauche (menu + calendrier) */
+.project-card--right-tall .project-image {
+  object-position: left top;
+}
+
 /* Base commune des étiquettes */
 .project-badge {
   position: absolute;
@@ -255,7 +260,7 @@ a.project-media {
   border-radius: 1.3rem 1.3rem 0.9rem 0;
 }
 
-/* NAEL BEAUTY : découpe ivoire en haut à droite */
+/* MAG : découpe ivoire en haut à droite */
 .project-badge--right-tall {
   top: 0;
   right: 0;
@@ -438,7 +443,7 @@ a.project-media {
   --category-y: calc(-9 * var(--px));
 }
 
-/* NAEL BEAUTY */
+/* MAG */
 .project-badge--right-tall {
   --title-x: calc(-7 * var(--px));
   --title-y: 3px;

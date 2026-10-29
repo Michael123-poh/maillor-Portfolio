@@ -20,12 +20,12 @@ const projects = [
     position: "left-bottom",
   },
   {
-    id: "nael",
-    name: "NAEL BEAUTY",
+    id: "mag",
+    name: "MAG",
     category: "APPLICATION WEB",
-    image: "/images/nael.png",
-    alt: "Aperçu du projet NAEL BEAUTY",
-    // pas encore de lien pour NAEL BEAUTY : la carte n'est pas cliquable
+    image: "/images/MAG.png",
+    alt: "Aperçu du projet MAG",
+    // pas encore de lien pour MAG : la carte n'est pas cliquable
     position: "right-tall",
   },
 ];
