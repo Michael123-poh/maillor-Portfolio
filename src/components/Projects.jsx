@@ -7,6 +7,7 @@ const projects = [
     category: "SITE VITRINE",
     image: "/images/gaia.png",
     alt: "Aperçu du projet GAIA",
+    url: "https://gaiaimagine.com/",
     position: "left-top",
   },
   {
@@ -15,6 +16,7 @@ const projects = [
     category: "APPLICATION WEB",
     image: "/images/homey.png",
     alt: "Aperçu du projet HOMEY SPACE",
+    url: "https://homey-space.vercel.app/",
     position: "left-bottom",
   },
   {
@@ -23,21 +25,33 @@ const projects = [
     category: "APPLICATION WEB",
     image: "/images/nael.png",
     alt: "Aperçu du projet NAEL BEAUTY",
+    // pas encore de lien pour NAEL BEAUTY : la carte n'est pas cliquable
     position: "right-tall",
   },
 ];
 
-function ProjectCard({ name, category, image, alt, position }) {
+function ProjectCard({ name, category, image, alt, url, position }) {
+  // Avec un lien, la zone image devient un lien (nouvel onglet) ; sans lien, un simple bloc
+  const Media = url ? "a" : "div";
+  const linkProps = url
+    ? {
+        href: url,
+        target: "_blank",
+        rel: "noopener noreferrer",
+        "aria-label": `Voir le projet ${name} (nouvel onglet)`,
+      }
+    : {};
+
   return (
     <article className={`project-card project-card--${position}`}>
-      <div className="project-media">
+      <Media className="project-media" {...linkProps}>
         <img className="project-image" src={image} alt={alt} />
 
         <div className={`project-badge project-badge--${position}`}>
           <h3>{name}</h3>
           <p>{category}</p>
         </div>
-      </div>
+      </Media>
     </article>
   );
 }

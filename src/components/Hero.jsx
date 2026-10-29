@@ -46,7 +46,7 @@ function Hero() {
           <p className="hero-firstname">YVES</p>
           <h2 className="hero-name">MAILLORE</h2>
 
-          <a href="projets" className="projects-button">
+          <a href="#projets" className="projects-button">
             MES PROJETS
             <span aria-hidden="true">◉</span>
           </a>

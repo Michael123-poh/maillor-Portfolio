@@ -145,6 +145,13 @@
   min-height: 0;
 }
 
+/* Quand la carte est un lien (GAIA, HOMEY SPACE) */
+a.project-media {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
 /* Le conteneur recadre l'image et ses coins */
 .project-media {
   position: relative;
@@ -285,7 +292,9 @@
 .projects-apple {
   display: block;
   flex: 0 0 auto;
-  width: clamp(calc(100 * var(--px)), 29vw, calc(330 * var(--px)));
+  /* taille raisonnable sur tous les écrans de bureau (avant : jusqu'à 330 px, ce qui
+     agrandissait la section sur les écrans de plus de 900 px de haut) */
+  width: clamp(calc(65 * var(--px)), 5.5vw, calc(105 * var(--px)));
   height: auto;
 
   transform: rotate(18deg);
