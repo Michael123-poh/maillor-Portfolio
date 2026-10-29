@@ -17,11 +17,11 @@ body {
 }
 
 #root {
-  min-height: 100vh;
+  min-height: calc(100 * var(--vh));
 }
 
 .portfolio-page {
-  min-height: 100vh;
+  min-height: calc(100 * var(--vh));
   background-color: #f7f4ed;
 }
 

@@ -73,7 +73,7 @@
   gap: 0.5rem;
 
   padding: 0.2rem 0.7rem;
-  border-radius: 999px;
+  border-radius: calc(999 * var(--px));
 
   background: #ca7d47;
   color: #fff;
@@ -285,11 +285,11 @@
 .projects-apple {
   display: block;
   flex: 0 0 auto;
-  width: clamp(100px, 29vw, 330px);
+  width: clamp(calc(100 * var(--px)), 29vw, calc(330 * var(--px)));
   height: auto;
 
   transform: rotate(18deg);
-  filter: drop-shadow(0 6px 10px rgba(59, 56, 43, 0.12));
+  filter: drop-shadow(0 calc(6 * var(--px)) calc(10 * var(--px)) rgba(59, 56, 43, 0.12));
   pointer-events: none;
 }
 
@@ -369,7 +369,7 @@
   }
 
   .projects-apple {
-    width: clamp(55px, 14vw, 80px);
+    width: clamp(calc(55 * var(--px)), 14vw, calc(80 * var(--px)));
   }
 }
 
@@ -404,7 +404,7 @@
   }
 
   .projects-apple {
-    width: clamp(65px, 5.5vw, 85px);
+    width: clamp(calc(65 * var(--px)), 5.5vw, calc(85 * var(--px)));
   }
 }
 
@@ -413,27 +413,40 @@
 
 /* GAIA */
 .project-badge--left-top {
-  --title-x: -7px;
-  --title-y: -4px;
+  --title-x: calc(-7 * var(--px));
+  --title-y: calc(-4 * var(--px));
 
-  --category-x: -7px;
-  --category-y: -7px;
+  --category-x: calc(-7 * var(--px));
+  --category-y: calc(-7 * var(--px));
 }
 
 /* HOMEY SPACE */
 .project-badge--left-bottom {
-  --title-x: 9px;
-  --title-y: -6px;
+  --title-x: calc(9 * var(--px));
+  --title-y: calc(-6 * var(--px));
 
-  --category-x: 9px;
-  --category-y: -9px;
+  --category-x: calc(9 * var(--px));
+  --category-y: calc(-9 * var(--px));
 }
 
 /* NAEL BEAUTY */
 .project-badge--right-tall {
-  --title-x: -7px;
+  --title-x: calc(-7 * var(--px));
   --title-y: 3px;
 
-  --category-x: -8px;
+  --category-x: calc(-8 * var(--px));
   --category-y: 0px;
+}
+
+/* PC : la section est au moins aussi haute que l'écran (comme À propos et Contact).
+   Le contenu est centré : la hauteur en plus devient de la marge interne en haut et en bas. */
+@media (min-width: 701px) {
+  .projects-section {
+    min-height: calc(100 * var(--vh));
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 }

@@ -98,6 +98,27 @@
   @media (max-width: 1024px) {
     font-size: 16px;
   }
+
+  /* Unités d'échelle : sur PC, 1 unité = 1px / 1vh / 1svh. */
+  --px: 1px;
+  --vh: 1vh;
+  --svh: 1svh;
+}
+
+/* TÉLÉPHONE : la mise en page est celle d'un écran de 412 x 922 (Pixel 9 Pro Fold),
+   mise à l'échelle proportionnellement à la largeur de l'écran.
+   - rem, px (via --px) et hauteurs d'écran (via --vh / --svh) suivent tous la même échelle ;
+   - l'échelle est plafonnée à 1.25 pour les grands téléphones / petites tablettes. */
+@media (max-width: 700px) {
+  :root {
+    --scale: min(calc(100vw / 412), 1.25px);
+    --px: var(--scale);
+    /* au moins la hauteur de l'écran : si l'écran est plus haut que 922 (à l'échelle),
+       les sections « plein écran » le remplissent et on ne voit pas la suivante dépasser */
+    --vh: max(calc(var(--scale) * 9.22), 1vh);
+    --svh: max(calc(var(--scale) * 9.22), 1svh);
+    font-size: calc(var(--scale) * 16);
+  }
 }
 
 @media (prefers-color-scheme: dark) {

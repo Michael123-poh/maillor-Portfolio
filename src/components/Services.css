@@ -13,7 +13,7 @@
   justify-content: space-between;
   align-items: center;
   gap: 2rem;
-  margin-bottom: clamp(4rem, 10vh, 7rem);
+  margin-bottom: clamp(4rem, calc(10 * var(--vh)), 7rem);
 }
 
 .services-heading {
@@ -54,7 +54,7 @@
   flex-direction: column;
   align-items: center;
   min-width: 0;
-  height: clamp(25rem, 61vh, 39rem);
+  height: clamp(25rem, calc(61 * var(--vh)), 39rem);
 
   padding: 1.5rem 0.8rem 1.2rem;
   border: 3px solid #f7f4ed;
@@ -162,7 +162,7 @@
 /* Indication visuelle pour la navigation clavier */
 .service-card:focus-visible {
   outline: 3px solid #ca7d47;
-  outline-offset: 4px;
+  outline-offset: calc(4 * var(--px));
 }
 
 /* Tablettes et téléphones */
@@ -231,6 +231,6 @@
   }
 
   .service-card {
-    height: clamp(24rem, 61vh, 34rem);
+    height: clamp(24rem, calc(61 * var(--vh)), 34rem);
   }
 }

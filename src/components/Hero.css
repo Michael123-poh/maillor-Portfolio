@@ -28,6 +28,25 @@
   );
 }
 
+/* Surface d'eau : mobile uniquement */
+.hero-water {
+  display: none;
+}
+
+/* Saut de ligne après "UNE" : mobile uniquement */
+.hero-br {
+  display: none;
+}
+
+/* Mobile uniquement : l'homme seul est caché sur PC, le conteneur d'infos est transparent */
+.hero-man {
+  display: none;
+}
+
+.hero-info {
+  display: contents;
+}
+
 /* Le grand titre */
 .hero-title {
   position: absolute;
@@ -110,7 +129,7 @@
   gap: 0.5rem;
 
   padding: 0.2rem 0.7rem;
-  border-radius: 999px;
+  border-radius: calc(999 * var(--px));
 
   background-color: #ca7d47;
   color: #ffffff;
@@ -130,40 +149,177 @@
 
 /* Ajustements pour les petits écrans */
 
+/* MOBILE : hero pleine page.
+   Titre dans un rectangle arrondi en haut à gauche, l'homme assis dessous à gauche,
+   et à droite, au niveau de ses pieds : spécialités, nom et bouton. */
 @media (max-width: 700px) {
+  .hero-frame {
+    display: grid;
+    grid-template-columns: minmax(0, 2.05fr) minmax(0, 1fr);
+    /* espace / titre / (homme + infos) : tout est ancré en bas de la page,
+       l'homme touche le bas du rectangle du titre */
+    grid-template-rows: 1fr auto auto;
+    column-gap: 0.4rem;
+
+    /* même hauteur que les autres sections (le haut de page a 2.75rem de marge) */
+    min-height: calc(100 * var(--vh) - 2.75rem);
+    box-sizing: border-box;
+    padding: 1.25rem 3% 6.5rem;
+
+    /* pour que l'eau (z-index négatif) reste au-dessus du fond mais sous le contenu */
+    isolation: isolate;
+  }
+
+  /* L'EAU (deux couches) :
+     - ::before : eau simple, elle monte 5.5rem au-dessus de la ligne des pieds (haut de l'eau) ;
+     - ::after  : eau avec reflets, elle démarre exactement à la ligne des pieds
+       (marge basse du hero = 6.5rem) pour que les reflets tombent sous les pieds.
+     L'eau s'arrête en bas du hero, sans toucher la section suivante.
+     Pour la monter / la descendre : changer 12rem (hauteur) et 5.5rem (= hauteur - 6.5rem). */
+  .hero-water {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+
+    display: block;
+    height: 12rem;
+    pointer-events: none;
+  }
+
+  .hero-water::before,
+  .hero-water::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  .hero-water::before {
+    top: 0;
+    background: url("/images/Surface d’eau douce et crémeuse.png") center / cover no-repeat;
+
+    opacity: 0.5;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 35%);
+    mask-image: linear-gradient(to bottom, transparent 0%, #000 35%);
+  }
+
+  /* reflets : l'image est à l'échelle de la mise en page 412 px
+     (largeur affichée 761 px, décalage horizontal -173 px) : les reflets tombent sous les
+     pieds de chaise (x ≈ 36 et 132) et sous la chaussure (x ≈ 228) */
+  .hero-water::after {
+    top: 5.5rem;
+    background-image: url("/images/Reflets crémeux sur l’eau sereine.png");
+    background-repeat: no-repeat;
+    background-size: calc(761 * var(--px)) auto;
+    background-position: calc(-173 * var(--px)) 0;
+
+    opacity: 0.5;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 25%);
+    mask-image: linear-gradient(to bottom, transparent 0%, #000 25%);
+  }
+
+  /* l'image de fond PC (forme beige + homme) n'est plus utilisée */
+  .hero-image {
+    display: none;
+  }
+
+  /* Titre dans un rectangle aux coins arrondis, de la couleur de la forme de la version PC */
   .hero-title {
-    top: 19%;
-    left: 20%;
-    width: 81%;
-    font-size: clamp(1.1rem, 6.2vw, 2.5rem);
+    position: static;
+    grid-column: 1 / -1;
+    grid-row: 2;
+    align-self: end;
+    justify-self: start;
+
+    /* presque toute la largeur : le rectangle empiète un peu sur les marges de la page */
+    width: calc(100% + 0.8rem);
+    margin-left: -0.4rem;
+    box-sizing: border-box;
+    padding: 2.4rem 0.8rem 3rem;
+    border-radius: 1.6rem;
+    background: #e1d9cd;
+
+    /* "UNE" et "IMMERSION" : grande taille ; "AU-DELÀ DU RÉEL" (plus long) : un peu plus petit */
+    font-size: 3.35rem;
     letter-spacing: -0.045em;
   }
 
-  .hero-services {
-    top: 51%;
-    right: 8.3%;
-    font-size: clamp(0.35rem, 1.2vw, 0.8rem);
+  .hero-br {
+    display: inline;
   }
 
+  .hero-title .title-line:nth-child(2) {
+    font-size: 0.73em;
+  }
+
+  /* L'homme assis : seul, rogné sur son contour (x 390→1275, y 0→905 sur 1672 x 940) */
+  .hero-man {
+    position: relative;
+    display: block;
+    grid-column: 1;
+    grid-row: 3;
+    align-self: end;
+
+    /* le rectangle du titre est derrière l'homme : sa tête passe devant */
+    z-index: 2;
+    margin-top: -1.4rem;
+
+    width: calc(100% + 0.6rem);
+    margin-left: -0.6rem;
+    aspect-ratio: 885 / 905;
+    overflow: hidden;
+  }
+
+  .hero-man img {
+    position: absolute;
+    top: 0;
+    left: -44.07%;
+    width: 188.9%;
+    max-width: none;
+    height: auto;
+  }
+
+  /* Colonne de droite, alignée sur le bas de l'homme (ses pieds) */
+  .hero-info {
+    grid-column: 2;
+    grid-row: 3;
+    align-self: end;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 1rem;
+    min-width: 0;
+    padding-bottom: 0.4rem;
+  }
+
+  .hero-services,
   .hero-signature {
-    top: 65%;
-    right: 8.3%;
+    position: static;
+  }
+
+  .hero-services {
+    font-size: 0.7rem;
+    line-height: 1.25;
   }
 
   .hero-firstname {
-    font-size: clamp(0.58rem, 2.4vw, 1rem);
+    font-size: 0.9rem;
   }
 
   .hero-name {
-    font-size: clamp(0.7rem, 1.6vw, 1.2rem);
-    margin-bottom: 0.2rem;
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
   }
 
   .projects-button {
-    padding: 0.12rem 0.5rem;
-    gap: 0.2rem;
+    padding: 0.2rem 0.65rem;
+    gap: 0.25rem;
 
-    font-size: clamp(0.55rem, 1.5vw, 0.7rem);
+    font-size: 0.7rem;
     line-height: 1.3;
   }
 }

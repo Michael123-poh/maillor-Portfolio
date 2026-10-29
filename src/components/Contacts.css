@@ -1,18 +1,18 @@
 .contact-section {
   /* IMAGE : taille et position */
-  --contact-image-width: 400px;
-  --contact-image-height: 270px;
-  --contact-image-x: 165px;
-  --contact-image-y: -70px;
+  --contact-image-width: calc(400 * var(--px));
+  --contact-image-height: calc(270 * var(--px));
+  --contact-image-x: calc(165 * var(--px));
+  --contact-image-y: calc(-70 * var(--px));
 
   --contact-field-height: 3.3rem;
   --contact-message-height: 4.5rem;
   --contact-label-gap: 0.25rem;
 
   /* BOÎTES ORANGE DES ICÔNES */
-  --contact-icon-box-width: 70px;
-  --contact-icon-box-height: 65px;
-  --contact-icon-size: 40px;
+  --contact-icon-box-width: calc(70 * var(--px));
+  --contact-icon-box-height: calc(65 * var(--px));
+  --contact-icon-size: calc(40 * var(--px));
   --contact-icon-padding: 0.6rem;
   --contact-icon-text-gap: 0.65rem;
 
@@ -25,7 +25,7 @@
   --contact-type-line-width: 68%;
   --contact-project-line-width: 68%;
 
-  min-height: 100svh;
+  min-height: calc(100 * var(--svh));
   padding: 4.5rem 8.5% 2rem;
   box-sizing: border-box;
 
@@ -265,17 +265,17 @@
 /* BOUTON ENVOYER */
 .contact-submit {
   position: relative;
-  top: 30px;
+  top: calc(30 * var(--px));
   display: flex;
   align-items: center;
   justify-content: center;
 
-  width: min(220px, 70%);
-  min-height: 7px;
+  width: min(calc(220 * var(--px)), 70%);
+  min-height: calc(7 * var(--px));
   padding: 0.2rem 1.9rem 0.2rem 2.5rem;
 
   border: 3px solid #ca7d47;
-  border-radius: 999px;
+  border-radius: calc(999 * var(--px));
 
   background: transparent;
   color: #443e2e;
@@ -297,8 +297,8 @@
   align-items: center;
   justify-content: center;
 
-  width: 36px;
-  height: 39px;
+  width: calc(36 * var(--px));
+  height: calc(39 * var(--px));
   transform: translateY(-50%);
 
   border: 3px solid #ca7d47;
@@ -308,8 +308,8 @@
 
 .contact-submit-icon span {
   display: block;
-  width: 24px;
-  height: 24px;
+  width: calc(24 * var(--px));
+  height: calc(24 * var(--px));
   border-radius: 50%;
   background: #ca7d47;
   transition: transform 180ms ease;
@@ -357,7 +357,7 @@
 /* TEXTE FINAL */
 .contact-manifesto {
   width: 100%;
-  max-width: 390px;
+  max-width: calc(390 * var(--px));
   margin-top: auto;
   padding-bottom: 0.7rem;
 
@@ -411,15 +411,15 @@
   }
 
   .contact-info-icon {
-    flex-basis: 38px;
-    width: 38px;
-    height: 36px;
+    flex-basis: calc(38 * var(--px));
+    width: calc(38 * var(--px));
+    height: calc(36 * var(--px));
     border-radius: 0.7rem;
   }
 
   .contact-icon {
-    width: 22px;
-    height: 22px;
+    width: calc(22 * var(--px));
+    height: calc(22 * var(--px));
   }
 
   .contact-info-copy h3 {
@@ -449,24 +449,51 @@
     min-height: 2.2rem;
   }
 
+  /* Formulaire centré : tous les champs prennent toute la largeur
+     (plus de largeurs inégales alignées à gauche) */
+  .contact-form-row {
+    width: 100%;
+  }
+
+  .contact-form .contact-field:nth-child(n) {
+    width: 100%;
+  }
+
+  /* Champs en rectangles aux coins arrondis (comme sur PC) */
+  .contact-section {
+    --contact-field-height: 3.6rem;
+    --contact-message-height: 5.4rem;
+  }
+
+  .contact-field {
+    padding: 0.4rem 0.8rem 0.45rem;
+    border: 2px solid #ca7d47;
+    border-radius: 1rem;
+  }
+
+  .contact-field:focus-within {
+    border-color: #443e2e;
+  }
+
   .contact-field > span {
-    font-size: 1.04rem;
+    font-size: 0.9rem;
   }
 
   .contact-submit {
-    width: min(340px, 100%);
-    min-height: 52px;
+    margin-inline: auto;
+    width: min(calc(340 * var(--px)), 100%);
+    min-height: calc(52 * var(--px));
     font-size: 1.2rem;
   }
 
   .contact-submit-icon {
-    width: 52px;
-    height: 52px;
+    width: calc(52 * var(--px));
+    height: calc(52 * var(--px));
   }
 
   .contact-submit-icon span {
-    width: 31px;
-    height: 31px;
+    width: calc(31 * var(--px));
+    height: calc(31 * var(--px));
   }
 
   .contact-aside {
@@ -477,7 +504,7 @@
 
   .contact-illustration {
     width: min(1%, 1px);
-    max-height: 10px;
+    max-height: calc(10 * var(--px));
     margin-bottom: 0;
   }
 
@@ -536,5 +563,46 @@
     max-height: var(--contact-image-height);
     height: auto;
     margin: 0 auto 0.5rem;
+  }
+}
+
+/* PC : champs en rectangles aux coins arrondis (plus de simple ligne en dessous) */
+@media (min-width: 701px) {
+  .contact-section {
+    --contact-field-height: 2.9rem;
+    --contact-message-height: 4.3rem;
+
+    /* largeur des champs : tous s'arrêtent sur la même ligne
+       (nom + email côte à côte occupent la même largeur que les autres) */
+    --contact-form-width: 78%;
+    --contact-name-line-width: 100%;
+    --contact-email-line-width: 100%;
+    --contact-type-line-width: var(--contact-form-width);
+    --contact-project-line-width: var(--contact-form-width);
+  }
+
+  .contact-form-row {
+    width: var(--contact-form-width);
+    gap: 0.75rem;
+  }
+
+  .contact-field > span {
+    font-size: clamp(0.6rem, 0.9vw, 0.85rem);
+  }
+
+  .contact-field input,
+  .contact-field select,
+  .contact-field textarea {
+    font-size: 0.85rem;
+  }
+
+  .contact-field {
+    padding: 0.3rem 0.7rem 0.3rem;
+    border: 2px solid #ca7d47;
+    border-radius: 1rem;
+  }
+
+  .contact-field:focus-within {
+    border-color: #443e2e;
   }
 }

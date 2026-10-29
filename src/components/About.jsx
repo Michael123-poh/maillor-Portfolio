@@ -45,7 +45,7 @@ function AboutItem({ number, label, title, description, side }) {
         <span className="about-number-text">{number}</span>
       </div>
 
-      <div className="about-copy">
+      <div className="about-copy about-reveal">
         <h3>
           <span className="about-label">{label} :</span>{" "}
           <span className="about-title">{title}</span>
@@ -60,6 +60,9 @@ function AboutItem({ number, label, title, description, side }) {
 function About() {
   const [isLit, setIsLit] = useState(false);
   const [isPulling, setIsPulling] = useState(false);
+  // Active uniquement pendant le changement d'état : l'ampoule glisse alors vers
+  // sa nouvelle position, mais ne « traîne » pas quand on redimensionne la fenêtre.
+  const [isMoving, setIsMoving] = useState(false);
 
   function handlePull() {
     if (isPulling) return;
@@ -69,24 +72,40 @@ function About() {
     // La lumière change pendant que le cordon bouge.
     setIsLit((current) => !current);
 
+    setIsMoving(true);
+
     window.setTimeout(() => {
       setIsPulling(false);
     }, 450);
+
+    window.setTimeout(() => {
+      setIsMoving(false);
+    }, 750);
   }
 
   return (
     <section
-      className={`about-section ${isLit ? "is-lit" : "is-dark"}`}
+      className={`about-section ${isLit ? "is-lit" : "is-dark"} ${
+        isMoving ? "is-moving" : ""
+      }`}
       id="apropos"
     >
       
       {/* ÉCRAN INITIAL : LUMIÈRE ÉTEINTE */}
       <div className="about-intro" aria-hidden={isLit}>
         <h2 className="about-intro-heading">
-          <span>
-            UNE <span className="about-intro-accent">IDÉE</span> DE
+          <span className="about-heading-line">
+            <span className="about-heading-lead">
+              <span className="about-heading-word">UNE</span>
+              <span className="about-accent">IDÉE</span>
+            </span>
+            <span className="about-heading-light">DE</span>
           </span>
-          <span>MA PERSONNE</span>
+
+          <span className="about-heading-line about-heading-name">
+            <span className="about-heading-word">MA</span>
+            <span>PERSONNE</span>
+          </span>
         </h2>
 
         <p className="about-intro-label">
@@ -96,24 +115,16 @@ function About() {
         </p>
       </div>
 
-      {/* NUMÉROS ANIMÉS INDÉPENDAMMENT DU TITRE */}
-      <div className="about-intro-numbers" aria-hidden="true">
-        {aboutItems.map((item) => (
-          <div
-            className={`about-intro-number about-intro-number--${item.number}`}
-            key={item.number}
-          >
-            <span className="about-number-text">
-              {item.number}
-            </span>
-          </div>
-        ))}
-      </div>
-
-
-      {/* AMPOULE : ELLE RESTE VISIBLE DANS LES DEUX ÉTATS */}
+      {/* AMPOULE : ELLE RESTE VISIBLE DANS LES DEUX ÉTATS
+          (une image pour le mode sombre, une pour le mode clair) */}
       <img
-        className="about-lamp about-lamp--left"
+        className="about-lamp about-lamp--left about-lamp--dark"
+        src="/images/Ampoule transparente à filament vintage.png"
+        alt=""
+        aria-hidden="true"
+      />
+      <img
+        className="about-lamp about-lamp--left about-lamp--light"
         src="/images/ampoule.png"
         alt=""
         aria-hidden="true"
@@ -132,23 +143,30 @@ function About() {
         aria-pressed={isLit}
       >
         <img src="/images/tire_ampoule.png" alt="" />
+        {/* Signal discret autour du pompon (mode sombre uniquement) */}
+        <span className="about-pull-signal" aria-hidden="true" />
       </button>
 
-      {/* ÉCRAN FINAL : À PROPOS */}
+      {/* ÉCRAN FINAL : À PROPOS
+          Les numéros sont toujours affichés (même place dans les deux états) :
+          seuls les textes apparaissent quand la lumière s'allume. */}
       <div
         className="about-main-content"
         aria-hidden={!isLit}
         inert={!isLit}
       >
-        <h2 className="about-heading">
+        <h2 className="about-heading about-reveal">
           <span className="about-heading-line">
-            <span>HEY!</span>
-            <span className="about-accent">JE</span>
+            <span className="about-heading-lead">
+              <span className="about-heading-word">HEY!</span>
+              <span className="about-accent">JE</span>
+            </span>
             <span className="about-heading-light">SUIS</span>
           </span>
 
           <span className="about-heading-line about-heading-name">
-            YVES MICHAEL M.
+            <span className="about-heading-word">YVES</span>
+            <span>MICHAEL M.</span>
           </span>
         </h2>
 
@@ -158,10 +176,12 @@ function About() {
           ))}
         </div>
 
-        <a className="about-button" href="#contact">
-          EN SAVOIR PLUS
-          <span aria-hidden="true">⊙</span>
-        </a>
+        <div className="about-reveal about-button-wrap">
+          <a className="about-button" href="#contact">
+            EN SAVOIR PLUS
+            <span aria-hidden="true">◉</span>
+          </a>
+        </div>
       </div>
     </section>
   );

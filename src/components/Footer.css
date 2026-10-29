@@ -3,13 +3,13 @@
   width: 100%;
   overflow: hidden;
   font-family: var(--font-acumin, sans-serif);
-  --footer-brown-height: clamp(22rem, 36svh, 28rem);
+  --footer-brown-height: clamp(22rem, calc(36 * var(--svh)), 28rem);
 }
 
 /* PARTIE ORANGE */
 .footer-top {
   position: relative;
-  height: clamp(22rem, 50svh, 34rem);
+  height: clamp(22rem, calc(50 * var(--svh)), 34rem);
   min-height: 25rem;
   overflow: hidden;
   background: #ca8c5d;
@@ -32,8 +32,8 @@
   align-items: center;
   justify-content: center;
 
-  width: 30px;
-  height: 30px;
+  width: calc(30 * var(--px));
+  height: calc(30 * var(--px));
 
   color: #fff;
   text-decoration: none;
@@ -47,8 +47,8 @@
 
 .footer-socials svg {
   display: block;
-  width: 23px;
-  height: 23px;
+  width: calc(23 * var(--px));
+  height: calc(23 * var(--px));
   overflow: visible;
   fill: none;
   stroke: currentColor;
@@ -96,33 +96,33 @@
 /* 1. LET'S TALK */
 .footer-figure--talk {
   --figure-width: 58%;
-  --figure-height: min(32svh, 250px);
-  --figure-x: -100px;
-  --figure-y: 10px;
+  --figure-height: min(calc(32 * var(--svh)), calc(250 * var(--px)));
+  --figure-x: calc(-100 * var(--px));
+  --figure-y: calc(10 * var(--px));
 }
 
 /* 2. MY WORK */
 .footer-figure--work {
   --figure-width: 44%;
-  --figure-height: min(32svh, 250px);
-  --figure-x: -70px;
-  --figure-y: 15px;
+  --figure-height: min(calc(32 * var(--svh)), calc(250 * var(--px)));
+  --figure-x: calc(-70 * var(--px));
+  --figure-y: calc(15 * var(--px));
 }
 
 /* 3. ABOUT ME */
 .footer-figure--about {
   --figure-width: 92%;
-  --figure-height: min(32svh, 250px);
-  --figure-x: 30px;
-  --figure-y: 13px;
+  --figure-height: min(calc(32 * var(--svh)), calc(250 * var(--px)));
+  --figure-x: calc(30 * var(--px));
+  --figure-y: calc(13 * var(--px));
 }
 
 /* 4. GET HOME */
 .footer-figure--home {
   --figure-width: 65%;
-  --figure-height: min(32svh, 250px);
-  --figure-x: 107px;
-  --figure-y: 12px;
+  --figure-height: min(calc(32 * var(--svh)), calc(250 * var(--px)));
+  --figure-x: calc(107 * var(--px));
+  --figure-y: calc(12 * var(--px));
 }
 
 /* Style commun des images */
@@ -192,31 +192,31 @@
 
 /* 1. LET'S TALK */
 .footer-navigation-link--talk {
-  --link-x: -97px;
+  --link-x: calc(-97 * var(--px));
   --link-y: 0px;
 }
 
 /* 2. MY WORK */
 .footer-navigation-link--work {
-  --link-x: -60px;
+  --link-x: calc(-60 * var(--px));
   --link-y: 0px;
 }
 
 /* 3. ABOUT ME */
 .footer-navigation-link--about {
-  --link-x: 45px;
+  --link-x: calc(45 * var(--px));
   --link-y: 0px;
 }
 
 /* 4. GET HOME */
 .footer-navigation-link--home {
-  --link-x: 105px;
+  --link-x: calc(105 * var(--px));
   --link-y: 0px;
 }
 
 .footer-navigation-link:hover {
   color: #ca8c5d;
-  transform: translateY(-7px);
+  transform: translateY(calc(-7 * var(--px)));
 }
 
 /* Grand THANKS en bas */
@@ -277,13 +277,13 @@
   }
 
   .footer-socials a {
-    width: 25px;
-    height: 25px;
+    width: calc(25 * var(--px));
+    height: calc(25 * var(--px));
   }
 
   .footer-socials svg {
-    width: 20px;
-    height: 20px;
+    width: calc(20 * var(--px));
+    height: calc(20 * var(--px));
   }
 
   .footer-figure img {
@@ -298,33 +298,33 @@
 /* 1. LET'S TALK */
 .footer-figure--talk {
   --figure-width: 90%;
-  --figure-height: min(32svh, 250px);
-  --figure-x: -25px;
+  --figure-height: min(calc(32 * var(--svh)), calc(250 * var(--px)));
+  --figure-x: calc(-25 * var(--px));
   --figure-y: 3px;
 }
 
 /* 2. MY WORK */
 .footer-figure--work {
   --figure-width: 75%;
-  --figure-height: min(32svh, 250px);
-  --figure-x: -20px;
-  --figure-y: 8px;
+  --figure-height: min(calc(32 * var(--svh)), calc(250 * var(--px)));
+  --figure-x: calc(-20 * var(--px));
+  --figure-y: calc(8 * var(--px));
 }
 
 /* 3. ABOUT ME */
 .footer-figure--about {
   --figure-width: 145%;
-  --figure-height: min(76svh, 390px);
+  --figure-height: min(calc(76 * var(--svh)), calc(390 * var(--px)));
   --figure-x: -3px;
-  --figure-y: 5px;
+  --figure-y: calc(5 * var(--px));
 }
 
 /* 4. GET HOME */
 .footer-figure--home {
   --figure-width: 105%;
-  --figure-height: min(32svh, 250px);
-  --figure-x: 28px;
-  --figure-y: 5px;
+  --figure-height: min(calc(32 * var(--svh)), calc(250 * var(--px)));
+  --figure-x: calc(28 * var(--px));
+  --figure-y: calc(5 * var(--px));
 }
 
 .site-footer {
@@ -348,32 +348,32 @@
 
 /* 1. LET'S TALK */
 .footer-navigation-link--talk {
-  --link-x: -87px;
-  --link-y: -15px;
+  --link-x: calc(-87 * var(--px));
+  --link-y: calc(-15 * var(--px));
   line-height: 0.9;
 }
 
 /* 2. MY WORK */
 .footer-navigation-link--work {
-  --link-x: -165px;
-  --link-y: -13px;
+  --link-x: calc(-165 * var(--px));
+  --link-y: calc(-13 * var(--px));
 }
 
 /* 3. ABOUT ME */
 .footer-navigation-link--about {
-  --link-x: 150px;
-  --link-y: -70px;
+  --link-x: calc(150 * var(--px));
+  --link-y: calc(-70 * var(--px));
 }
 
 /* 4. GET HOME */
 .footer-navigation-link--home {
-  --link-x: 80px;
-  --link-y: -70px;
+  --link-x: calc(80 * var(--px));
+  --link-y: calc(-70 * var(--px));
 }
 
 .footer-navigation-link:hover {
   color: #ca8c5d;
-  transform: translateY(-7px);
+  transform: translateY(calc(-7 * var(--px)));
 }
 
   .footer-navigation-link {
@@ -406,15 +406,15 @@
 /* Écrans de bureau peu hauts */
 @media (min-width: 701px) and (max-height: 900px) {
   .footer-top {
-    height: 50svh;
+    height: calc(50 * var(--svh));
   }
 
   .site-footer {
-  --footer-brown-height: clamp(22rem, 35svh, 26rem);
+  --footer-brown-height: clamp(22rem, calc(35 * var(--svh)), 26rem);
 }
 
   .footer-figure img {
-    height: min(35svh, 280px);
+    height: min(calc(35 * var(--svh)), calc(280 * var(--px)));
   }
 
   .footer-navigation {
