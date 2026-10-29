@@ -10,6 +10,15 @@ function Hero() {
         alt=""
       />
 
+      {/* Mobile uniquement : nuages dans le ciel, au-dessus du titre */}
+      <div className="hero-clouds" aria-hidden="true">
+        <img className="hero-cloud hero-cloud--thick-1" src="/images/nuage epais.png" alt="" />
+        <img className="hero-cloud hero-cloud--thick-2" src="/images/nuage epais.png" alt="" />
+        <img className="hero-cloud hero-cloud--thin-1" src="/images/petit nuage fin.png" alt="" />
+        <img className="hero-cloud hero-cloud--thin-2" src="/images/petit nuage fin.png" alt="" />
+        <img className="hero-cloud hero-cloud--thin-3" src="/images/petit nuage fin.png" alt="" />
+      </div>
+
       {/* Mobile uniquement : eau avec reflet, sous les pieds de l'homme (image en fond dans le CSS) */}
       <div className="hero-water" aria-hidden="true" />
 

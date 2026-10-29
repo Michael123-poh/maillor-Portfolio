@@ -28,6 +28,11 @@
   );
 }
 
+/* Nuages : mobile uniquement */
+.hero-clouds {
+  display: none;
+}
+
 /* Surface d'eau : mobile uniquement */
 .hero-water {
   display: none;
@@ -219,6 +224,65 @@
     opacity: 0.5;
     -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 25%);
     mask-image: linear-gradient(to bottom, transparent 0%, #000 25%);
+  }
+
+  /* NUAGES : dans le ciel, entre le menu et le titre, derrière tout le reste.
+     Positions et tailles à l'échelle de la mise en page 412 px. */
+  .hero-clouds {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+
+    display: block;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  /* Nuages fixes. --w = largeur, --l = position horizontale, --y = hauteur (à l'échelle 412 px) */
+  .hero-cloud {
+    position: absolute;
+    top: var(--y);
+    left: var(--l);
+    display: block;
+    max-width: none;
+    width: var(--w);
+    height: auto;
+  }
+
+  .hero-cloud--thick-1 {
+    --w: calc(285 * var(--px));
+    --l: calc(-27 * var(--px));
+    --y: calc(75 * var(--px));
+    opacity: 0.43;
+  }
+
+  .hero-cloud--thick-2 {
+    --w: calc(215 * var(--px));
+    --l: calc(240 * var(--px));
+    --y: calc(205 * var(--px));
+    transform: scaleX(-1);
+    opacity: 0.35;
+  }
+
+  .hero-cloud--thin-1 {
+    --w: calc(260 * var(--px));
+    --l: calc(210 * var(--px));
+    --y: calc(45 * var(--px));
+    opacity: 0.46;
+  }
+
+  .hero-cloud--thin-2 {
+    --w: calc(225 * var(--px));
+    --l: calc(-38 * var(--px));
+    --y: calc(238 * var(--px));
+    opacity: 0.75;
+  }
+
+  .hero-cloud--thin-3 {
+    --w: calc(175 * var(--px));
+    --l: calc(263 * var(--px));
+    --y: calc(152 * var(--px));
+    opacity: 0.78;
   }
 
   /* l'image de fond PC (forme beige + homme) n'est plus utilisée */
