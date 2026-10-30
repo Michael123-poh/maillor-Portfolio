@@ -45,12 +45,12 @@ const socials = [
   {
     id: "linkedin",
     label: "LinkedIn",
-    href: "https://www.linkedin.com/",
+    href: "https://www.linkedin.com/in/yves-maillor%C3%A9-36bb78231/",
   },
   {
     id: "github",
     label: "GitHub",
-    href: "https://github.com/",
+    href: "https://github.com/Michael123-poh/",
   },
 ];
 

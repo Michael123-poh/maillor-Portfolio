@@ -421,3 +421,26 @@
     top: 1.5rem;
   }
 }
+
+
+/* PC : le footer occupe au moins tout l'écran (comme les autres sections).
+   Orange et marron se partagent la hauteur (58 % / 42 %), sans descendre sous leur hauteur minimale. */
+@media (min-width: 701px) {
+  .site-footer {
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .footer-top {
+    flex: 58 1 0;
+    height: auto;
+    min-height: 25rem;
+  }
+
+  .footer-bottom {
+    flex: 42 1 0;
+    height: auto;
+    min-height: var(--footer-brown-height);
+  }
+}

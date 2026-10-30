@@ -158,8 +158,8 @@ function About() {
         <h2 className="about-heading about-reveal">
           <span className="about-heading-line">
             <span className="about-heading-lead">
-              <span className="about-heading-word">HEY!</span>
-              <span className="about-accent">JE</span>
+              <span className="about-heading-word about-accent">HEY!</span>
+              <span>JE</span>
             </span>
             <span className="about-heading-light">SUIS</span>
           </span>
