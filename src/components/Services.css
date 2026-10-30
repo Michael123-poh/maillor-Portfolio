@@ -66,6 +66,10 @@
   cursor: pointer;
   overflow: hidden;
 
+  /* pas de flash bleu/gris du navigateur au toucher */
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+
   transition:
     flex 500ms ease,
     background-color 350ms ease,
