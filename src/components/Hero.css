@@ -362,8 +362,8 @@
 
     background: radial-gradient(
       ellipse at 50% 50%,
-      rgba(68, 62, 46, 0.3) 0%,
-      rgba(68, 62, 46, 0.12) 45%,
+      rgba(68, 62, 46, 0.13) 0%,
+      rgba(68, 62, 46, 0.05) 45%,
       transparent 72%
     );
     filter: blur(calc(3 * var(--px)));
